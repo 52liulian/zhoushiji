@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+
+# 临时/测试文件
+_*.py
+_*.js
+_test_*
+*.bak
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# 本地导出文件（用户自己导出的 xlsx/xls）
+*.xlsx
+*.xls

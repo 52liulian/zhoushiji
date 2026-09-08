@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="static/zhoushiji.ico" type="image/x-icon">
+<title>周食记 · zhoushiji</title>
+<link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+<div class="wrap">
+  <h1>示例学校 · 周食记</h1>
+  <div class="toolbar">
+    <label>学校名称：</label>
+    <input type="text" id="schoolName" style="min-width:170px;" placeholder="示例学校" onchange="onSchoolNameChange()">
+    <label>选择周：</label>
+    <button onclick="goPrevWeek()" title="上一周">◀</button>
+    <select id="weekSel" style="min-width:210px;"></select>
+    <button onclick="goNextWeek()" title="下一周">▶</button>
+    <span class="date-box" style="display:none;">
+      <label>开始：</label><input type="date" id="startDate">
+      <label>结束：</label><input type="date" id="endDate">
+    </span>
+    <button onclick="render()" style="display:none;">刷新</button>
+    <button onclick="openDishLibrary()">🥬 菜品库</button>
+    <button onclick="analyze()">📊 均衡检查</button>
+    <button onclick="exportExcel()" class="ghost">📥 导出Excel</button>
+    <span class="tip">提示：点击餐格 ➕ 加菜，✕ 删菜</span>
+  </div>
+  </div>
+
+  <div class="sheet">
+    <table id="menuTable">
+      <colgroup><col style="width:150px;"><col><col><col></colgroup>
+      <tbody>
+        <tr class="title-row"><td class="title" id="tblTitle" colspan="4">示例学校一周食谱</td></tr>
+        <tr class="title-row"><td class="range" id="tblRange" colspan="4"></td></tr>
+        <tr class="header-row"><td>星期</td><td>早&nbsp;&nbsp;餐</td><td>中&nbsp;&nbsp;餐</td><td>晚&nbsp;&nbsp;餐</td></tr>
+        <tbody id="mealBody"></tbody>
+      </tbody>
+    </table>
+    <div class="notice" id="notice"></div>
+  </div>
+  <div class="safety" style="max-width:1100px;margin:35px auto 0;">⚠️ <b>重要：数据安全提醒</b><br>本工具数据保存在浏览器本地，清理浏览器缓存或更换设备会导致数据丢失。菜谱完成后请<b>立即导出 Excel</b>，并存至电脑、微信收藏或云盘永久保存。</div>
+</div>
+
+<!-- 弹窗：添加菜品 / 菜品库 -->
+<div id="modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:50;align-items:center;justify-content:center;">
+  <div id="modalBox" style="background:#fff;padding:22px;border-radius:10px;min-width:440px;max-width:95vw;box-sizing:border-box;">
+    <h3 id="modalTitle" style="margin-top:0;"></h3>
+    <div id="modalBody"></div>
+    <div style="text-align:right;margin-top:14px;"><button class="ghost" onclick="closeModal()">取消</button></div>
+  </div>
+</div>
+
+<script src="static/app.js"></script>
+</body>
+</html>
