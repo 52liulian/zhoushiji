@@ -30,7 +30,6 @@ let DATA = {
       { "name": "豆干炒肉", "sides": ["豆干100g", "肉丝50g"] },
       { "name": "蒜台炒肉", "sides": ["蒜台100g", "肉丝50g"] },
       { "name": "红烧翅根", "sides": ["翅根1个"] },
-      { "name": "豆角炒肉", "sides": ["豆角80g", "肉丝50g"] },
       { "name": "青椒炒肉", "sides": ["青椒80g", "肉丝50g"] },
       { "name": "青椒炒猪肝", "sides": ["猪肝100g"] },
       { "name": "土豆烧牛肉", "sides": ["土豆100g", "牛肉30g"] },
@@ -59,13 +58,11 @@ let DATA = {
       { "name": "青椒烧冬瓜", "sides": ["冬瓜100g"] },
       { "name": "清炒莴笋", "sides": ["莴笋100g"] },
       { "name": "青菜炒千张", "sides": ["青菜100g", "千张100g"] },
-      { "name": "酸辣土豆丝", "sides": ["土豆丝100g"] },
       { "name": "麻婆豆腐", "sides": ["豆腐100g"] },
       { "name": "青椒木耳洋葱千叶豆腐", "sides": ["青椒100g", "洋葱30g", "千叶豆腐100g"] },
       { "name": "清炒冬瓜虾米", "sides": ["冬瓜100g"] },
       { "name": "干煸豆角", "sides": ["豆角100g"] },
-      { "name": "韭菜黄豆芽", "sides": ["韭黄20g", "黄豆芽100g"] },
-      { "name": "麻婆豆腐", "sides": ["豆腐100g"] }
+      { "name": "韭菜黄豆芽", "sides": ["韭黄20g", "黄豆芽100g"] }
     ],
     "粥汤": [
       { "name": "胡辣汤", "sides": [] },
@@ -108,7 +105,7 @@ let DATA = {
       "label": "9月第2周", "range": "2026年9月7日——2026年9月11日", "startDate": "2026-09-07", "endDate": "2026-09-11",
       "days": {
         "星期一": { "早餐": ["洋葱炒蛋（洋葱100g 鸡蛋1个）", "韭菜黄豆芽（韭黄20g 黄豆芽100g）", "蒸红薯", "三鲜包", "馒头", "鸡蛋", "绿豆粥"], "中餐": ["鱼香肉丝（大肉50g 木耳30g 胡萝卜30g）", "红烧鱼块（鱼块100g）", "清炒冬瓜虾米（冬瓜100g）", "香菇菜心（菜心100g）", "蒸面条（荤）（面条300g 大肉50g 黄豆芽50g）", "鱼头豆腐汤", "咖喱鸡块（鸡块100g）"], "晚餐": ["豆干炒肉（豆干100g 肉丝50g）", "酸辣白菜（白菜100g）", "馒头", "鸡蛋", "八宝粥"] },
-        "星期二": { "早餐": ["胡辣汤", "炸油条", "芹菜炒肉（芹菜100g 肉丝50g）", "麻婆豆腐（豆腐100g）", "馒头", "鸡蛋", "小米粥"], "中餐": ["青椒炒猪肝（猪肝100g）", "宫保鸡丁（鸡丁80g 黄瓜50g 胡萝卜50g）", "清炒黄心菜（黄心菜100g）", "酸辣土豆丝（土豆丝100g）", "蛋炒饭（米饭300g 鸡蛋1个）", "紫菜蛋花汤"], "晚餐": ["蒜台炒肉（蒜台100g 肉丝50g）", " 韭菜黄豆芽（韭黄20g 黄豆芽80g）", "馒头", "鸡蛋", "小米粥"] },
+        "星期二": { "早餐": ["胡辣汤", "炸油条", "芹菜炒肉（芹菜100g 肉丝50g）", "麻婆豆腐（豆腐100g）", "馒头", "鸡蛋", "小米粥"], "中餐": ["青椒炒猪肝（猪肝100g）", "宫保鸡丁（鸡丁80g 黄瓜50g 胡萝卜50g）", "清炒黄心菜（黄心菜100g）", "酸辣土豆丝（土豆丝100g）", "蛋炒饭（米饭300g 鸡蛋1个）", "紫菜蛋花汤"], "晚餐": ["蒜台炒肉（蒜台100g 肉丝50g）", "韭菜黄豆芽（韭黄20g 黄豆芽80g）", "馒头", "鸡蛋", "小米粥"] },
         "星期三": { "早餐": ["窝子面", "西葫芦炒鸡蛋（西葫芦100g 鸡蛋1个）", "干煸豆角（豆角100g）", "馒头", "鸡蛋", "蒸红薯", "玉米糁"], "中餐": ["红烧翅根（翅根1个）", "豆角炒肉（豆角100g 大肉50g）", "西葫芦炒鸡蛋（西葫芦100g 鸡蛋1个）", "蒜蓉苔菜（苔菜100g）", "炒河粉（河粉100g）", "西红柿鸡蛋汤"], "晚餐": ["青椒炒肉（青椒80g 肉丝50g）", "韭菜烧猪血（韭菜100g 猪血100g）", "馒头", "鸡蛋", "绿豆粥"] },
         "星期四": { "早餐": ["牛肉胡辣汤（牛肉30g）", "酸辣土豆丝（土豆丝100g）", "油麦菜炒千张（油麦菜100g 千张100g）", "馒头", "鸡蛋", "八宝粥"], "中餐": ["冬瓜烧五花肉（肉40g 冬瓜80g）", "土豆烧鸡（鸡肉50g 土豆80g）", "蒜蓉白菜（白菜100g）", "红烧豆腐（豆腐100g）", "蛋炒饭（米饭300g 鸡蛋1个）", "紫菜蛋花汤"], "晚餐": ["土豆炒肉（土豆150g 肉丝50g）", "青椒炒千张（青椒80g 千张100g）", "馒头", "鸡蛋", "玉米糁"] },
         "星期五": { "早餐": ["窝子面", "蒜台炒蛋（蒜台120g）", "酸辣白菜（白菜100g）", "馒头", "鸡蛋", "绿豆粥"], "中餐": ["土豆烧牛肉（土豆100g 牛肉30g）", "辣椒炒羊肝（羊肝50g）", "蒜蓉包菜（包菜100g）", "西红柿炒鸡蛋（西红柿100g 鸡蛋1个）", "紫菜蛋花汤"], "晚餐": [] }
@@ -193,6 +190,57 @@ function migrateDishDb(data) {
       return e;
     });
   });
+  return changed;
+}
+
+/* 一次性数据修复（幂等）：清理菜品库重复条目 + 周菜谱餐格字符串首尾空格。
+   - 菜品库：同一分类内按「完整菜名 dishText」去重（与添加菜品 doAddDishToLib 的去重规则一致），
+     保留首次出现的条目；同名但配菜不同视为不同菜品，不误删；
+   - 周菜谱：所有餐格字符串 trim，剔除空白项，并按 trim 后文本去重。
+   覆盖老用户 IndexedDB 中已存在的脏数据；无脏数据时不做任何变更，可重复执行。
+   @param data DATA 对象（原地修改）；@returns {boolean} 是否发生了修复 */
+function dedupeAndTrimData(data) {
+  if (!data) return false;
+  let changed = false;
+
+  // 1) 菜品库：分类内按完整菜名去重，保留第一条
+  if (data.dish_db) {
+    Object.keys(data.dish_db).forEach(cat => {
+      const arr = Array.isArray(data.dish_db[cat]) ? data.dish_db[cat] : [];
+      const seen = new Set();
+      const kept = [];
+      arr.forEach(e => {
+        const text = dishText(e);
+        if (seen.has(text)) { changed = true; return; }
+        seen.add(text);
+        kept.push(e);
+      });
+      if (kept.length !== arr.length) data.dish_db[cat] = kept;
+    });
+  }
+
+  // 2) 周菜谱餐格：逐项 trim，剔除空白/重复项
+  if (data.weeks) {
+    Object.values(data.weeks).forEach(wk => {
+      if (!wk || !wk.days) return;
+      DAYS.forEach(day => {
+        MEALS.forEach(meal => {
+          const cell = wk.days[day] && wk.days[day][meal];
+          if (!Array.isArray(cell)) return;
+          const seen = new Set();
+          const kept = [];
+          cell.forEach(s => {
+            const t = String(s == null ? "" : s).trim();
+            if (t !== s) changed = true;            // 存在首尾空格
+            if (!t || seen.has(t)) { changed = true; return; }  // 空白项或重复项
+            seen.add(t);
+            kept.push(t);
+          });
+          if (kept.length !== cell.length) wk.days[day][meal] = kept;
+        });
+      });
+    });
+  }
   return changed;
 }
 
@@ -1072,6 +1120,7 @@ function loadScript(src) {
 async function boot() {
   await loadLocal();  // IndexedDB 有保存过就覆盖内嵌种子；没有则 DATA 保持内嵌的完整种子
   migrateDishDb(DATA);  // 一次性迁移：旧版字符串菜品 → 标准对象（随后 save 持久化）
+  dedupeAndTrimData(DATA);  // 幂等修复：菜品库重复条目去重 + 周菜谱餐格首尾空格清理（随后 save 持久化）
   const schoolEl = document.getElementById("schoolName");
   if (schoolEl) schoolEl.value = schoolName();
   applySchoolName();

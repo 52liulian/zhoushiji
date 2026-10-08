@@ -22,9 +22,11 @@
 ## 📦 项目结构
 
 ```
-├── index.html              # ⭐ 单文件应用（数据内嵌 + IndexedDB 持久化）
+├── index.html              # 页面入口（工具栏 + 食谱表格 + 弹窗）
 ├── static/
-│   ├── exceljs.min.js      # Excel 导出库
+│   ├── app.js              # ⭐ 全部业务逻辑 + 内嵌种子数据（IndexedDB 持久化）
+│   ├── style.css           # 页面样式
+│   ├── exceljs.min.js      # Excel 导出库（首次导出时动态加载）
 │   └── zhoushiji.ico       # 网站图标
 ├── .gitignore
 └── README.md
@@ -46,8 +48,9 @@
 
 ## 🧪 验证状态
 
-- ✅ IndexedDB 读写（5 周次 / 6 分类 / 71 菜品）
+- ✅ IndexedDB 读写（种子数据：5 周次 / 6 分类 / 75 菜品）
 - ✅ 菜品库增删改 + 周次引用同步
 - ✅ 拖拽跨餐格移动
 - ✅ Excel 导出：列宽 15/40、页边距 1cm、水平垂直居中
+- ✅ 启动时幂等修复：菜品库按完整菜名去重、餐格字符串自动 trim
 - ✅ GitHub Pages 可部署
