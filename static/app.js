@@ -65,7 +65,8 @@ let DATA = {
       { "name": "青椒木耳洋葱千叶豆腐", "sides": ["青椒100g", "洋葱30g", "千叶豆腐100g"] },
       { "name": "清炒冬瓜虾米", "sides": ["冬瓜100g"] },
       { "name": "干煸豆角", "sides": ["豆角100g"] },
-      { "name": "韭菜黄豆芽", "sides": ["韭黄20g", "黄豆芽100g"] }
+      { "name": "韭菜黄豆芽", "sides": ["韭黄20g", "黄豆芽100g"] },
+      { "name": "清炒时蔬", "sides": ["时令青菜100g"] }
     ],
     "粥汤": [
       { "name": "胡辣汤", "sides": [] },
@@ -84,7 +85,10 @@ let DATA = {
     "面点": [
       { "name": "炸油条", "sides": [] },
       { "name": "糖包", "sides": [] },
-      { "name": "三鲜包", "sides": [] }
+      { "name": "三鲜包", "sides": [] },
+      { "name": "煎饼", "sides": [] },
+      { "name": "馅饼", "sides": [] }, 
+      { "name": "鸡蛋饼", "sides": [] }
     ],
     "其它": [
       { "name": "洋葱炒蛋", "sides": ["洋葱100g", "鸡蛋1个"] },
@@ -94,7 +98,6 @@ let DATA = {
     ]
   },
   "weeks": {
-
   }
 };
 const DAYS = ["星期一","星期二","星期三","星期四","星期五"];
@@ -472,6 +475,28 @@ function jumpToWeek(key) {
 /* 工具栏按钮：上一周 / 下一周 */
 function goPrevWeek() { jumpToWeek(prevWeekKey(currentWeekKey())); }
 function goNextWeek() { jumpToWeek(nextWeekKey(currentWeekKey())); }
+
+/* 一键跳转到今天所在周次。
+   - 优先匹配 DATA.weeks 中含今天的周次（用实际 startDate/endDate 判定，支持调休跨周末）；
+   - 找不到则按周一起始规则推算今天的周一日期作为 key（跨周末已选下，调休场景保留兼容）。
+   @returns 无；副作用：调用 jumpToWeek 改变下拉选中、触发渲染 */
+function goCurrentWeek() {
+  const now = new Date();
+  const pad = n => String(n).padStart(2, "0");
+  const todayStr = `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}`;
+  // 1) 优先匹配 DATA.weeks 中实际区间覆盖今天的周次（含调休跨周末）
+  for (const k of Object.keys(DATA.weeks || {})) {
+    const w = DATA.weeks[k];
+    const s = w.startDate || w.start || k;
+    const e = w.endDate || w.end;
+    if (s <= todayStr && (!e || todayStr <= e)) { jumpToWeek(k); return; }
+  }
+  // 2) 无匹配则按周一起始推算今天所在周一的日期
+  const d = new Date(now); let dow = d.getDay(); if (dow === 0) dow = 7;
+  d.setDate(d.getDate() - (dow - 1));
+  const key = `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+  jumpToWeek(key);
+}
 
 /* 选择周次后：回填该周日期区间 + 同步 range + 刷新表格。
    - 新周次：按 key（周一日期）推算标准周一~周五；
@@ -1012,23 +1037,123 @@ function handleDishDrop(e, tgtKey, tgtDay, tgtMeal) {
   save(); render();
 }
 
-/* ===== 均衡检查 ===== */
+/* ===== 均衡检查 =====
+   多维度分析当前周次食谱：
+   1) 每餐必检项：中/晚餐需有荤有素有主食，早餐需有主食建议配蛋；
+   2) 中餐建议配汤品；
+   3) 空餐告警（已排餐次但菜品为空）；
+   4) 高频重复菜提醒（≥3 次）+ 从菜品库推荐未使用的同类替换；
+   5) 周维度荤素比例（理想 1:1 ~ 1:1.5）。
+   分类优先用 dish_db 实际归类，未收录时按菜名关键字兜底推断。 */
 function analyze() {
   const key = document.getElementById("weekSel").value;
   const week = DATA.weeks[key];
-  const tips = [];
-  weekDayEntries(week).forEach(({ label: dayLabel, slot: day }) => {
-    MEALS.forEach(meal => {
-      const all = fullMeal(week, day, meal).join("");
-      if (!all.trim()) return;
-      const hasMeat = /肉|鸡|鱼|牛|羊|肝|翅|丸|猪|蛋/.test(all);
-      const hasVeg = /炒|烧|清炒|蒜蓉|青菜|白菜|冬瓜|豆腐|土豆|菜心/.test(all);
-      if ((meal === "中餐" || meal === "晚餐") && !hasMeat) tips.push(`⚠ ${dayLabel} ${meal} 缺少荤菜，建议补充蛋白质`);
-      if (meal === "中餐" && !/汤/.test(all)) tips.push(`· ${dayLabel} ${meal} 建议搭配一份汤品`);
+  const notice = document.getElementById("notice");
+  if (!week) { notice.innerHTML = "<b>均衡检查：</b>请先选择周次"; return; }
+
+  // 1) 菜名 → 分类映射（精确：菜品库已收录）
+  const dishCat = {};
+  Object.entries(DATA.dish_db || {}).forEach(([cat, list]) => {
+    list.forEach(d => {
+      const n = typeof d === "string" ? d : d.name;
+      dishCat[n] = cat;
     });
   });
-  document.getElementById("notice").innerHTML =
-    "<b>均衡提示：</b><br>" + (tips.length ? tips.join("<br>") : "✅ 搭配良好");
+
+  // 2) 遍历每天每餐，统计菜品/分类/计数
+  const dayRows = [];   // { day, meal, dishes:[{name, cat}] }
+  const dishCount = {}; // 菜名 → 本周出现次数
+  const catCount = {};  // 分类 → 本周总数
+  weekDayEntries(week).forEach(({ label: dayLabel, slot: day }) => {
+    MEALS.forEach(meal => {
+      const dishes = fullMeal(week, day, meal)
+        .filter(d => d && d.trim())
+        .map(n => ({ name: n, cat: dishCat[n] || inferDishCat(n) }));
+      dishes.forEach(d => {
+        dishCount[d.name] = (dishCount[d.name] || 0) + 1;
+        catCount[d.cat] = (catCount[d.cat] || 0) + 1;
+      });
+      dayRows.push({ day: dayLabel, meal, dishes });
+    });
+  });
+
+  // 3) 每餐规则检查
+  const warns = [], infos = [];
+  dayRows.forEach(({ day, meal, dishes }) => {
+    if (!dishes.length) {
+      // 仅当中/晚餐空着才算告警（早餐空可视为不供餐）
+      if (meal !== "早餐") warns.push(`⚠ ${day} ${meal} 未排菜`);
+      return;
+    }
+    const cats = dishes.map(d => d.cat);
+    const names = dishes.map(d => d.name).join("");
+    const hasMeat  = cats.includes("荤菜") || /肉|鸡|鱼|牛|羊|肝|翅|丸|猪|里脊/.test(names);
+    const hasVeg   = cats.includes("素菜");
+    const hasStaple = cats.includes("主食") || /馒头|饭|面|粥|玉米|红薯|窝子面/.test(names);
+    const hasSoup  = cats.includes("粥汤") || /汤|粥/.test(names);
+    const hasEgg   = /蛋/.test(names);
+
+    if (meal === "中餐" || meal === "晚餐") {
+      if (!hasMeat)  warns.push(`⚠ ${day} ${meal} 缺荤菜，建议补充蛋白质`);
+      if (!hasVeg)   warns.push(`⚠ ${day} ${meal} 缺素菜，建议补充蔬菜`);
+    }
+    if (meal === "早餐") {
+      if (!hasStaple) warns.push(`⚠ ${day} ${meal} 缺主食`);
+      if (!hasEgg)   infos.push(`· ${day} ${meal} 建议配蛋类`);
+    }
+    if (meal === "中餐" && !hasSoup) infos.push(`· ${day} ${meal} 建议配汤品`);
+  });
+
+  // 4) 高频重复菜 + 替换推荐：跳过主食/粥汤类（馒头/米饭/粥等本就该每天出现，不算重复问题）
+  const stapleCats = ["主食", "粥汤"];
+  const repeats = Object.entries(dishCount)
+    .filter(([n, c]) => c >= 3 && !stapleCats.includes(dishCat[n] || inferDishCat(n)))
+    .sort((a, b) => b[1] - a[1]);
+  if (repeats.length) {
+    infos.push(`🔁 高频菜：${repeats.map(([n, c]) => `${n}×${c}`).join("、")}（建议替换）`);
+    // 推荐未使用的同类替换候选：过滤同名异写、过滤带「（荤）/（素）/（清真）」变体
+    const baseName = n => n.replace(/（.*?）.*/, "").trim();
+    const rep = repeats.slice(0, 3).flatMap(([n]) => {
+      const cat = dishCat[n] || inferDishCat(n);
+      const pool = (DATA.dish_db[cat] || []).map(d => typeof d === "string" ? d : d.name)
+        .filter(m => !dishCount[m]
+          && baseName(m) !== baseName(n)
+          && !/[（(](荤|素|清真)[)）]/.test(m));
+      return pool.length ? `${n} → 可换 ${pool.slice(0, 2).join("、")}` : [];
+    });
+    if (rep.length) infos.push(`💡 替换建议：${rep.join("；")}`);
+  }
+
+  // 5) 周荤素比
+  const meat = catCount["荤菜"] || 0, veg = catCount["素菜"] || 0;
+  if (meat + veg >= 4) {
+    if (meat > veg * 1.5)      infos.push(`📊 荤素比 ${meat}:${veg}，荤菜偏多`);
+    else if (veg > meat * 1.5) infos.push(`📊 荤素比 ${meat}:${veg}，素菜偏多`);
+    else                       infos.push(`📊 荤素比 ${meat}:${veg}，搭配均衡`);
+  }
+
+  // 6) 输出
+  let html = "<b>📊 均衡检查</b><br>";
+  if (!warns.length && !infos.length) {
+    html += "✅ 搭配良好，荤素主食齐全";
+  } else {
+    if (warns.length) html += warns.join("<br>") + (infos.length ? "<br>" : "");
+    if (infos.length) html += infos.join("<br>");
+  }
+  notice.innerHTML = html;
+}
+
+/* 兜底分类：菜名未在 dish_db 收录时，按关键字推断其分类。
+   - 优先匹配汤/粥/豆浆等液态饮食；
+   - 主食关键字扩展到包子/窝头/饼/饺子/汤圆/粽子等；
+   - 素菜关键字避免单字「豆」误判（豆浆非素），改用豆干/豆角/豆芽/千张/豆腐等精确词。
+   @param name 菜名；@returns string 分类名（与 dish_db 的 key 对齐） */
+function inferDishCat(name) {
+  if (/汤|粥|豆浆|玉米糁/.test(name)) return "粥汤";
+  if (/面|馒头|饭|玉米|红薯|窝子|包子|窝头|饼|饺子|汤圆|粽子|油条|糖包/.test(name)) return "主食";
+  if (/肉|鸡|鱼|牛|羊|肝|翅|丸|猪|里脊|肉丝|肉丁|排骨|血/.test(name)) return "荤菜";
+  if (/菜|豆腐|豆干|豆角|豆芽|千张|瓜|笋|菇|白菜|包菜|苔菜|莴笋|西葫芦|包心菜|番茄|西红柿|时蔬|青菜|菠菜|生菜|油菜|茄子|青椒|洋葱|韭菜|芹菜|蒜台|蒜苗|苋菜|空心菜|花菜|西兰花|海带|黄瓜|丝瓜/.test(name)) return "素菜";
+  return "其它";
 }
 
 /* ===== 持久化：IndexedDB（浏览器原生，大容量、异步、无需服务器/Python） ===== */
