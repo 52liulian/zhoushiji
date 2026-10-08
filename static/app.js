@@ -985,7 +985,7 @@ let _ctx = {};
 function renderCandidates(kw) {
   const box = document.getElementById("libBox");
   if (!box) return;
-  const list = searchDishes(kw).slice(0, 30);
+  const list = searchDishes(kw);
   if (!list.length) {
     box.innerHTML = '<div style="color:#999;font-size:12px;padding:4px;">无匹配菜品，可在下方直接输入新菜名</div>';
     return;
