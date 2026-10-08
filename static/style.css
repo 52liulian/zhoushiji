@@ -42,6 +42,8 @@ td.day {
   font-family: "SimSun", "宋体"; font-size: 13px; font-weight: bold;
   text-align: center; vertical-align: middle; width: 200px; white-space: nowrap; background: #fafbff;
 }
+td.day .day-date { font-size: 12px; color: #1a3a6b; font-weight: normal; }
+td.day .day-label { font-size: 14px; }
 td.meal { font-family: "SimHei", "黑体"; font-size: 12px; padding: 6px 8px; line-height: 1.7; vertical-align: top; }
 /* 菜品行：inline-flex 让菜名与右侧 ✕ 删除按钮垂直居中对齐；✕ 跟在菜名后，默认隐藏，hover 整行时显示 */
 td.meal .dish { display: inline-flex; align-items: center; gap: 8px; cursor: grab; }

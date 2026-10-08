@@ -4,17 +4,20 @@ let DATA = {
   "dish_db": {
     "主食": [
       { "name": "窝子面", "sides": [] },
+      { "name": "米饭", "sides": [] },
+      { "name": "蒸面条（荤）", "sides": ["面条300g", "大肉50g", "黄豆芽/豆角50g"] },
+      { "name": "蒸面条（素）", "sides": ["面条300g", "黄豆芽/豆角50g"] },
+      { "name": "蒸面条（清真）", "sides": ["面条300g", "鸡肉80g", "黄豆芽/豆角50g"] },
+      { "name": "蛋炒饭", "sides": ["米饭300g", "鸡蛋1个"] },
+      { "name": "炒河粉", "sides": ["河粉300g", "鸡蛋1个"] },
+      { "name": "炒米粉", "sides": ["米粉300g", "鸡蛋1个"] },
+      { "name": "炒面", "sides": ["面条300g", "鸡蛋1个"] },
+      { "name": "捞面条", "sides": [] },
+      { "name": "糊汤面", "sides": [] },
       { "name": "馒头", "sides": [] },
       { "name": "鸡蛋", "sides": [] },
       { "name": "蒸玉米棒", "sides": [] },
-      { "name": "蒸红薯", "sides": [] },
-      { "name": "蒸面条（荤）", "sides": ["面条300g", "大肉50g", "黄豆芽50g"] },
-      { "name": "蒸面条（素）", "sides": ["面条300g", "黄豆芽50g"] },
-      { "name": "蒸面条（清真）", "sides": ["面条300g", "鸡肉80g", "黄豆芽50g"] },
-      { "name": "蛋炒饭", "sides": ["米饭300g", "鸡蛋1个"] },
-      { "name": "炒河粉", "sides": ["河粉100g"] },
-      { "name": "炒米粉", "sides": ["米粉100g"] },
-      { "name": "炒面", "sides": ["面100g"] }
+      { "name": "蒸红薯", "sides": [] }
     ],
     "荤菜": [
       { "name": "豆角炒肉", "sides": ["豆角100g", "大肉50g"] },
@@ -91,60 +94,94 @@ let DATA = {
     ]
   },
   "weeks": {
-    "2026-08-31": {
-      "label": "9月第1周", "range": "2026年8月31日——2026年9月4日", "startDate": "2026-08-31", "endDate": "2026-09-04",
-      "days": {
-        "星期一": { "早餐": [], "中餐": [], "晚餐": [] },
-        "星期二": { "早餐": [], "中餐": [], "晚餐": [] },
-        "星期三": { "早餐": [], "中餐": [], "晚餐": [] },
-        "星期四": { "早餐": [], "中餐": [], "晚餐": [] },
-        "星期五": { "早餐": [], "中餐": [], "晚餐": [] }
-      }
-    },
-    "2026-09-07": {
-      "label": "9月第2周", "range": "2026年9月7日——2026年9月11日", "startDate": "2026-09-07", "endDate": "2026-09-11",
-      "days": {
-        "星期一": { "早餐": ["洋葱炒蛋（洋葱100g 鸡蛋1个）", "韭菜黄豆芽（韭黄20g 黄豆芽100g）", "蒸红薯", "三鲜包", "馒头", "鸡蛋", "绿豆粥"], "中餐": ["鱼香肉丝（大肉50g 木耳30g 胡萝卜30g）", "红烧鱼块（鱼块100g）", "清炒冬瓜虾米（冬瓜100g）", "香菇菜心（菜心100g）", "蒸面条（荤）（面条300g 大肉50g 黄豆芽50g）", "鱼头豆腐汤", "咖喱鸡块（鸡块100g）"], "晚餐": ["豆干炒肉（豆干100g 肉丝50g）", "酸辣白菜（白菜100g）", "馒头", "鸡蛋", "八宝粥"] },
-        "星期二": { "早餐": ["胡辣汤", "炸油条", "芹菜炒肉（芹菜100g 肉丝50g）", "麻婆豆腐（豆腐100g）", "馒头", "鸡蛋", "小米粥"], "中餐": ["青椒炒猪肝（猪肝100g）", "宫保鸡丁（鸡丁80g 黄瓜50g 胡萝卜50g）", "清炒黄心菜（黄心菜100g）", "酸辣土豆丝（土豆丝100g）", "蛋炒饭（米饭300g 鸡蛋1个）", "紫菜蛋花汤"], "晚餐": ["蒜台炒肉（蒜台100g 肉丝50g）", "韭菜黄豆芽（韭黄20g 黄豆芽80g）", "馒头", "鸡蛋", "小米粥"] },
-        "星期三": { "早餐": ["窝子面", "西葫芦炒鸡蛋（西葫芦100g 鸡蛋1个）", "干煸豆角（豆角100g）", "馒头", "鸡蛋", "蒸红薯", "玉米糁"], "中餐": ["红烧翅根（翅根1个）", "豆角炒肉（豆角100g 大肉50g）", "西葫芦炒鸡蛋（西葫芦100g 鸡蛋1个）", "蒜蓉苔菜（苔菜100g）", "炒河粉（河粉100g）", "西红柿鸡蛋汤"], "晚餐": ["青椒炒肉（青椒80g 肉丝50g）", "韭菜烧猪血（韭菜100g 猪血100g）", "馒头", "鸡蛋", "绿豆粥"] },
-        "星期四": { "早餐": ["牛肉胡辣汤（牛肉30g）", "酸辣土豆丝（土豆丝100g）", "油麦菜炒千张（油麦菜100g 千张100g）", "馒头", "鸡蛋", "八宝粥"], "中餐": ["冬瓜烧五花肉（肉40g 冬瓜80g）", "土豆烧鸡（鸡肉50g 土豆80g）", "蒜蓉白菜（白菜100g）", "红烧豆腐（豆腐100g）", "蛋炒饭（米饭300g 鸡蛋1个）", "紫菜蛋花汤"], "晚餐": ["土豆炒肉（土豆150g 肉丝50g）", "青椒炒千张（青椒80g 千张100g）", "馒头", "鸡蛋", "玉米糁"] },
-        "星期五": { "早餐": ["窝子面", "蒜台炒蛋（蒜台120g）", "酸辣白菜（白菜100g）", "馒头", "鸡蛋", "绿豆粥"], "中餐": ["土豆烧牛肉（土豆100g 牛肉30g）", "辣椒炒羊肝（羊肝50g）", "蒜蓉包菜（包菜100g）", "西红柿炒鸡蛋（西红柿100g 鸡蛋1个）", "紫菜蛋花汤"], "晚餐": [] }
-      }
-    },
-    "2026-09-14": {
-      "label": "9月第3周", "range": "2026年9月14日——2026年9月18日", "startDate": "2026-09-14", "endDate": "2026-09-18",
-      "days": {
-        "星期一": { "早餐": [], "中餐": [], "晚餐": [] },
-        "星期二": { "早餐": [], "中餐": [], "晚餐": [] },
-        "星期三": { "早餐": [], "中餐": [], "晚餐": [] },
-        "星期四": { "早餐": [], "中餐": [], "晚餐": [] },
-        "星期五": { "早餐": [], "中餐": [], "晚餐": [] }
-      }
-    },
-    "2026-09-21": {
-      "label": "9月第4周", "range": "2026年9月21日——2026年9月25日", "startDate": "2026-09-21", "endDate": "2026-09-25",
-      "days": {
-        "星期一": { "早餐": [], "中餐": [], "晚餐": [] },
-        "星期二": { "早餐": [], "中餐": [], "晚餐": [] },
-        "星期三": { "早餐": [], "中餐": [], "晚餐": [] },
-        "星期四": { "早餐": [], "中餐": [], "晚餐": [] },
-        "星期五": { "早餐": [], "中餐": [], "晚餐": [] }
-      }
-    },
-    "2026-09-28": {
-      "label": "9月第5周", "range": "2026年9月28日——2026年10月2日", "startDate": "2026-09-28", "endDate": "2026-10-02",
-      "days": {
-        "星期一": { "早餐": [], "中餐": [], "晚餐": [] },
-        "星期二": { "早餐": [], "中餐": [], "晚餐": [] },
-        "星期三": { "早餐": [], "中餐": [], "晚餐": [] },
-        "星期四": { "早餐": [], "中餐": [], "晚餐": [] },
-        "星期五": { "早餐": [], "中餐": [], "晚餐": [] }
-      }
-    }
+
   }
 };
 const DAYS = ["星期一","星期二","星期三","星期四","星期五"];
 const MEALS = ["早餐","中餐","晚餐"];
+/* JS getDay() 序号 → 中文星期名（周日=0） */
+const WEEK_CN = ["星期日","星期一","星期二","星期三","星期四","星期五","星期六"];
+
+/* 计算某周实际供餐天数（endDate - startDate + 1）。
+   - 缺结束日期 / 结束早于开始时视为 1 天；
+   - 起止同日为 1 天；
+   - 区间大于 5 天时，渲染层会以 5 槽位循环复用、自动续行，无需新建周次。
+   @param week 周次对象；@returns {number} 实际天数（>=1） */
+function weekDayCount(week) {
+  if (!week || !week.startDate) return DAYS.length;
+  const s = parseDate(week.startDate), e = parseDate(week.endDate || week.startDate);
+  if (!s || !e || e < s) return 1;
+  return Math.floor((e - s) / 86400000) + 1;
+}
+
+/* 取某周实际供餐日的标签与槽位映射。
+   - 槽位直接用该日的实际星期名：周六→「星期六」、周日→「星期日」，直观且互不绑定；
+   - 区间 ≤ 7 天时各星期名天然不重复，无需去重；
+   - 区间 > 7 天（极端跨周连排）时同一星期名会重复，追加 _2/_3… 后缀去重，菜品仍独立；
+   - 标准周一~周五 5 天周：槽位仍为星期一~星期五，兼容历史数据。
+   @param week 周次对象；
+   @returns {{label:string, slot:string, date:Date}[]} 长度=实际天数，每项含显示用星期名 label、
+            存储槽位 slot、该日 Date 对象 date（供「上方日期」显示） */
+function weekDayEntries(week) {
+  const s = week && week.startDate;
+  const n = weekDayCount(week);
+  const m = s && /^(\d{4})-(\d{2})-(\d{2})$/.exec(s);
+  const d = m ? new Date(+m[1], +m[2] - 1, +m[3]) : null;
+  if (!d || isNaN(d.getTime())) {
+    return DAYS.map(label => ({ label, slot: label, date: null }));
+  }
+  const out = [];
+  const used = {};   // 星期名 -> 已出现次数，用于 >7 天时去重
+  for (let i = 0; i < n; i++) {
+    const label = WEEK_CN[(d.getDay() + i) % 7];
+    let slot = label;
+    if (used[label]) {
+      used[label]++;
+      slot = label + "_" + used[label];
+    } else {
+      used[label] = 1;
+    }
+    const date = new Date(d.getTime());
+    date.setDate(date.getDate() + i);   // 该供餐日的日期（用于「10月8日」显示）
+    out.push({ label, slot, date });
+  }
+  return out;
+}
+
+/* 格式化为「M月D日」（不含年，如 10月8日）；非法日期返回空串 */
+function fmtDate_MD(date) {
+  if (!date || isNaN(date.getTime())) return "";
+  return `${date.getMonth() + 1}月${date.getDate()}日`;
+}
+
+/* 确保某周实际天数所需的所有槽位都已初始化（按实际星期名）。
+   - 区间扩展到 >5 天时，按需创建「星期六」「星期日」等槽位，避免 fullMeal/render 访问 undefined；
+   - 区间收缩时，多余槽位保留在数据中（无害），下次扩展可复用已有菜品。
+   @param week 周次对象（原地修改） */
+function ensureDaySlots(week) {
+  if (!week || !week.days) return;
+  weekDayEntries(week).forEach(e => {
+    if (!week.days[e.slot]) week.days[e.slot] = { 早餐: [], 中餐: [], 晚餐: [] };
+    MEALS.forEach(m => { if (!Array.isArray(week.days[e.slot][m])) week.days[e.slot][m] = []; });
+  });
+}
+
+/* 兼容工具：解析 YYYY-MM-DD 为本地 Date（避免 UTC 偏移），非法返回 null */
+function parseDate(str) {
+  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(str || "");
+  if (!m) return null;
+  const d = new Date(+m[1], +m[2] - 1, +m[3]);
+  return isNaN(d.getTime()) ? null : d;
+}
+
+/* 取某周前 5 个供餐日的实际星期标签（兼容旧调用：DAYS 长度）。
+   - 以 week.startDate 为第 1 天，用 Date.getDay() 逐日推算，是星期与日期对应的唯一可信口径；
+   - 仅用于「显示层」；菜品仍按位置槽位存储在 days 的 DAYS 键中；
+   - startDate 缺失或非法时回退标准 DAYS（星期一~星期五），保证历史数据可渲染。
+   @param week 周次对象；@returns {string[]} 长度 5 的星期名数组 */
+function weekDayLabels(week) {
+  return weekDayEntries(week).slice(0, DAYS.length).map(e => e.label);
+}
 const STAPLES = { "早餐": [], "中餐": [], "晚餐": [] };
 
 /* ================= 动态菜品分类（从 DATA.dish_db 的 keys 实时获取） ================= */
@@ -436,14 +473,15 @@ function jumpToWeek(key) {
 function goPrevWeek() { jumpToWeek(prevWeekKey(currentWeekKey())); }
 function goNextWeek() { jumpToWeek(nextWeekKey(currentWeekKey())); }
 
-/* 选择周次后：自动设置开始/结束日期 + 同步 range + 刷新表格。
-   跨月友好：直接从 key（周一日期字符串）推算，不再依赖「当前月」getMonthWeeks 查找 */
+/* 选择周次后：回填该周日期区间 + 同步 range + 刷新表格。
+   - 新周次：按 key（周一日期）推算标准周一~周五；
+   - 已存在周次：保留用户手动调整过的起止日期（调休场景），仅同步标签与 range 文案，
+     避免切换周次后自定义区间被标准值覆盖。
+   跨月友好：直接从 key 推算，不依赖「当前月」getMonthWeeks 查找 */
 function onWeekSelect() {
   const key = document.getElementById("weekSel").value;
   if (!key) return;
   const w = deriveWeekFromKey(key);
-  document.getElementById("startDate").value = w.start;
-  document.getElementById("endDate").value = w.end;
 
   if (!DATA.weeks[key]) {
     DATA.weeks[key] = {
@@ -452,34 +490,84 @@ function onWeekSelect() {
       days: (() => { const o = {}; DAYS.forEach(d => o[d] = {早餐:[],中餐:[],晚餐:[]}); return o; })(),
     };
   } else {
-    DATA.weeks[key].label = w.label;
-    DATA.weeks[key].range = buildRange(w.start, w.end);
-    DATA.weeks[key].startDate = w.start;
-    DATA.weeks[key].endDate = w.end;
+    const wk = DATA.weeks[key];
+    wk.label = w.label;
+    // 历史数据缺字段时回退标准日期；已有的自定义值原样保留
+    if (!wk.startDate) wk.startDate = w.start;
+    if (!wk.endDate) wk.endDate = w.end;
+    wk.range = buildRange(wk.startDate, wk.endDate);
+    ensureDaySlots(wk);   // 该周如有自定义区间>5天，补齐独立槽位
   }
+  document.getElementById("startDate").value = DATA.weeks[key].startDate;
+  document.getElementById("endDate").value = DATA.weeks[key].endDate;
   save(); render();
 }
 
-/* 日期选择器被手动修改时：若匹配到某周次则同步下拉框选中，否则清空选中 */
-function syncWeekFromDate() {
-  const s = document.getElementById("startDate").value;
-  const sel = document.getElementById("weekSel");
+/* 手动修改日期区间（调休场景）：更新「当前选中周次」的起止日期并持久化、刷新表格。
+   - 只改当前周的日期区间，不切换周次身份（下拉选中保持不变，表格不会因自定义日期消失）；
+   - 开始日期为空时忽略（日期框被清空的中间态）；
+   - 结束日期留空或早于开始日期时，内部按开始日期兜底（最少 1 天），但**不回填结束日期输入框**，
+     避免用户手动输入过程中值被擦掉导致「无法输入」；仅当用户改的是开始日期、且结束日期为空/倒置时
+     才自动把结束日期对齐到开始日期。
+   - 修改结果随周次持久化，再次切回该周时由 onWeekSelect 回填保留。
+   @param {Event} [evt] change 事件对象，用于区分改动来源（开始 vs 结束输入框） */
+function onDateRangeChange(evt) {
+  const key = document.getElementById("weekSel").value;
+  const week = key && DATA.weeks[key];
+  if (!week) return;
+  const startEl = document.getElementById("startDate");
+  const endEl = document.getElementById("endDate");
+  const s = startEl.value;
   if (!s) return;
-  // 遍历下拉项找匹配
-  let matched = false;
-  for (let i = 0; i < sel.options.length; i++) {
-    if (sel.options[i].value === s) { sel.selectedIndex = i; matched = true; break; }
-  }
-  if (!matched) sel.value = ""; // 自定义日期（不在当月周次内）
+  let e = endEl.value;
+  const fromEnd = evt && evt.target === endEl;
+  // 内部生效的结束日期：缺省/倒置时用开始日期兜底
+  const eff = (!e || e < s) ? s : e;
+  // 仅在用户修改的是「开始日期」时，才自动把结束日期对齐到开始日期；
+  // 用户正在手动输入结束日期时，绝不覆盖输入框，保证可以正常键入
+  if (!fromEnd && eff !== e) endEl.value = eff;
+  week.startDate = s;
+  week.endDate = eff;
+  week.range = buildRange(s, eff);
+  ensureDaySlots(week);   // 扩展到>5天时创建独立槽位（星期X_2/_3…），避免渲染访问 undefined
+  save();
+  render();
 }
 
 /* 组装某餐完整菜品（含自动标配） */
 function fullMeal(week, day, meal) {
-  const list = (week.days[day][meal] || []).slice();
+  const cell = week.days[day];
+  const list = (cell && cell[meal] || []).slice();
   if (list.length === 0) return list;
   const staples = STAPLES[meal] || [];
   staples.forEach(s => { if (!list.includes(s)) list.push(s); });
   return list;
+}
+
+/* 将某餐菜品按显示规则分组（用于表格渲染与 Excel 导出）：
+   - 有配菜的菜（菜名含括号「（…）」）独占一行；
+   - 汤粥（菜名含「汤」「粥」）独占一行，不参与两两配对；
+   - 其余无配菜的纯菜名两两一组、用顿号「、」连接成一行（末尾落单独占一行）。
+   顺序保留原列表顺序，分组时遇到独占项先冲刷缓冲区。
+   @param dishes 菜品字符串数组（fullMeal 结果）
+   @returns {{dish:string, index:number}[][]} 二维数组，每个子数组是一行的菜品（含原数组索引，供删除按钮定位） */
+function groupMealLines(dishes) {
+  const lines = [];
+  let pair = [];
+  const flush = () => { if (pair.length) { lines.push(pair); pair = []; } };
+  dishes.forEach((d, i) => {
+    const isSoup = /汤|粥/.test(d);
+    const hasSides = /（[^）]+）/.test(d);
+    if (isSoup || hasSides) {
+      flush();
+      lines.push([{ dish: d, index: i }]);
+    } else {
+      pair.push({ dish: d, index: i });
+      if (pair.length === 2) flush();
+    }
+  });
+  flush();
+  return lines;
 }
 
 /* 渲染表格 */
@@ -496,10 +584,21 @@ function render() {
   document.getElementById("tblRange").colSpan = 4;
   const body = document.getElementById("mealBody");
   body.innerHTML = "";
-  DAYS.forEach(day => {
+  // 按实际天数渲染：<5 天只画对应行（不显示多余星期/空格），>5 天以 5 槽位循环自动续行
+  weekDayEntries(week).forEach(({ label, slot: day, date }) => {
     const tr = document.createElement("tr");
     const tdDay = document.createElement("td");
-    tdDay.className = "day"; tdDay.textContent = day;
+    tdDay.className = "day";
+    // 上方显示日期（如「10月8日」），下方显示星期；无日期时仅显示星期
+    const dateText = fmtDate_MD(date);
+    if (dateText) {
+      const dDiv = document.createElement("div");
+      dDiv.className = "day-date"; dDiv.textContent = dateText;
+      tdDay.appendChild(dDiv);
+    }
+    const sDiv = document.createElement("div");
+    sDiv.className = "day-label"; sDiv.textContent = label;
+    tdDay.appendChild(sDiv);
     tr.appendChild(tdDay);
     MEALS.forEach(meal => {
       const td = document.createElement("td");
@@ -510,23 +609,30 @@ function render() {
       td.ondragleave = () => td.classList.remove("drop-over");
       td.ondrop = e => { e.preventDefault(); td.classList.remove("drop-over"); handleDishDrop(e, key, day, meal); };
       const dishes = fullMeal(week, day, meal);
-      dishes.forEach((d, i) => {
-        const span = document.createElement("span");
-        span.className = "dish";
-        const isStaple = (STAPLES[meal] || []).includes(d);
-        span.innerHTML = escapeHtml(d) + (isStaple ? "" : ` <span class="x" onclick="delDish('${key}','${day}','${meal}',${i})">✕</span>`);
-        if (isStaple) span.classList.add("staple");
-        // 拖拽源：只有非标配菜品可拖
-        if (!isStaple) {
-          span.draggable = true;
-          span.ondragstart = e => {
-            e.dataTransfer.setData("text/plain", JSON.stringify({weekKey:key, day, meal, index:i}));
-            e.dataTransfer.effectAllowed = "move";
-            span.classList.add("dragging");
-          };
-          span.ondragend = () => span.classList.remove("dragging");
-        }
-        td.appendChild(span);
+      // 按显示规则分组：有配菜/汤粥独占一行，无配菜两两顿号连接
+      const lines = groupMealLines(dishes);
+      lines.forEach(line => {
+        line.forEach((item, j) => {
+          const d = item.dish, i = item.index;
+          const span = document.createElement("span");
+          span.className = "dish";
+          const isStaple = (STAPLES[meal] || []).includes(d);
+          span.innerHTML = escapeHtml(d) + (isStaple ? "" : ` <span class="x" onclick="delDish('${key}','${day}','${meal}',${i})">✕</span>`);
+          if (isStaple) span.classList.add("staple");
+          // 拖拽源：只有非标配菜品可拖
+          if (!isStaple) {
+            span.draggable = true;
+            span.ondragstart = e => {
+              e.dataTransfer.setData("text/plain", JSON.stringify({weekKey:key, day, meal, index:i}));
+              e.dataTransfer.effectAllowed = "move";
+              span.classList.add("dragging");
+            };
+            span.ondragend = () => span.classList.remove("dragging");
+          }
+          td.appendChild(span);
+          // 同一行多个菜品之间用中文顿号分隔
+          if (j < line.length - 1) td.appendChild(document.createTextNode("、"));
+        });
         td.appendChild(document.createElement("br"));
       });
       const add = document.createElement("div");
@@ -835,7 +941,10 @@ function doAddDishToLib() {
 /* ===== 在某餐插入菜：菜品库选择栏直接输入关键字筛选，点击列表菜品即添加 ===== */
 function openAddToMeal(key, day, meal) {
   _ctx = {key, day, meal};
-  showModal(`➕ ${day} ${meal} 添加菜品`, `
+  // day 是槽位；取该槽位在本周显示中的星期标签（同一槽位可能因>5天对应多天，取首个匹配即可）
+  const entry = weekDayEntries(DATA.weeks[key]).find(e => e.slot === day);
+  const dayLabel = entry ? entry.label : day;
+  showModal(`➕ ${dayLabel} ${meal} 添加菜品`, `
     <p>从菜品库选择（直接输入关键字筛选，点击菜品即可添加）：</p>
     <input id="libInput" placeholder="输入关键字筛选，如：土豆、牛肉、粥、番茄…" style="width:100%;"
            oninput="renderCandidates(this.value)" onfocus="renderCandidates(this.value)">
@@ -908,14 +1017,14 @@ function analyze() {
   const key = document.getElementById("weekSel").value;
   const week = DATA.weeks[key];
   const tips = [];
-  DAYS.forEach(day => {
+  weekDayEntries(week).forEach(({ label: dayLabel, slot: day }) => {
     MEALS.forEach(meal => {
       const all = fullMeal(week, day, meal).join("");
       if (!all.trim()) return;
       const hasMeat = /肉|鸡|鱼|牛|羊|肝|翅|丸|猪|蛋/.test(all);
       const hasVeg = /炒|烧|清炒|蒜蓉|青菜|白菜|冬瓜|豆腐|土豆|菜心/.test(all);
-      if ((meal === "中餐" || meal === "晚餐") && !hasMeat) tips.push(`⚠ ${day} ${meal} 缺少荤菜，建议补充蛋白质`);
-      if (meal === "中餐" && !/汤/.test(all)) tips.push(`· ${day} ${meal} 建议搭配一份汤品`);
+      if ((meal === "中餐" || meal === "晚餐") && !hasMeat) tips.push(`⚠ ${dayLabel} ${meal} 缺少荤菜，建议补充蛋白质`);
+      if (meal === "中餐" && !/汤/.test(all)) tips.push(`· ${dayLabel} ${meal} 建议搭配一份汤品`);
     });
   });
   document.getElementById("notice").innerHTML =
@@ -1009,9 +1118,9 @@ function showModal(title, html, width) {
 }
 function closeModal() { document.getElementById("modal").style.display = "none"; }
 
-/* 绑定日期选择器：手动改日期 → 反选周次下拉 */
-document.getElementById("startDate").addEventListener("change", syncWeekFromDate);
-document.getElementById("endDate").addEventListener("change", syncWeekFromDate);
+/* 绑定日期选择器：手动改日期 → 更新当前周区间（调休场景），不切换周次 */
+document.getElementById("startDate").addEventListener("change", onDateRangeChange);
+document.getElementById("endDate").addEventListener("change", onDateRangeChange);
 
 /* ===== 导出 Excel：exceljs 生成 .xlsx =====
    标题合并4列居中(宋体18pt粗) → 日期合并4列居右(宋体11pt粗) → 表头灰底(宋体12pt粗)
@@ -1081,17 +1190,20 @@ async function exportExcel() {
   });
   ws.getRow(3).height = 24;
 
-  // 行4~8：每天三餐
-  DAYS.forEach((day, r) => {
+  // 行4起：每天三餐（首列上方日期 + 下方星期，日期随开始日期逐日递增，调休周可跨周末；>5天自动续行）
+  weekDayEntries(week).forEach(({ label, slot: day, date }, r) => {
     const rowNum = 4 + r;
-    ws.getCell(rowNum, 1).value = day;
+    // 首列：上方「10月8日」+ 下方「星期X」，与网页渲染一致
+    const dateText = fmtDate_MD(date);
+    ws.getCell(rowNum, 1).value = dateText ? `${dateText}\n${label}` : label;
     ws.getCell(rowNum, 1).font = { name: "宋体", size: 11, bold: true };
     ws.getCell(rowNum, 1).alignment = center;
     ws.getCell(rowNum, 1).border = border;
     MEALS.forEach((meal, c) => {
       const dishes = fullMeal(week, day, meal);
       const cell = ws.getCell(rowNum, c + 2);
-      cell.value = dishes.join("\n");
+      // 按显示规则分组：有配菜/汤粥独占一行，无配菜两两顿号连接（与表格渲染一致）
+      cell.value = groupMealLines(dishes).map(line => line.map(item => item.dish).join("、")).join("\n");
       cell.font = { name: "黑体", size: 10 };
       cell.alignment = center;
       cell.border = border;
